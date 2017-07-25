@@ -1,0 +1,17 @@
+{% extends "account/basic.html" %}
+  {% block content %}
+<div class="col-md-1"></div> 
+<div class="col-md-7 divcommun" style="	margin-top:20px; min-height:100%">
+     {% for post in object_list %}
+	   <p>
+         <h5>
+             <a href="/blog/{{post.id}}"><strong style=" text-transform: uppercase;">{{ post.title }}</strong></a>
+         </h5>
+         <h5 style="color: black ; font-size: medium;">
+		     The massage : {{ post.body}}
+		 </h5>
+       </p><br/>
+     {% endfor %}
+   </div>
+   <div class="col-sm-2"></div>
+  {% endblock %}

@@ -1,0 +1,22 @@
+{% extends "account/basic.html" %}
+{% block content %}
+<div class="col-md-8 modal "  id="id02" style="width:100%;">
+	<center class="modal-content animate" style="width : 30%">
+		<div class="row">    
+			{% if form.errors %}
+				<p class="error"> sorry that's not a valid username or password </p><br/>
+			{% else %}
+				<br/>
+			{% endif %}
+		</div> 
+		<h3 style="color:green;" >Login</h3><br/>
+		<form  action="/account/auth/" method="POST" >{% csrf_token %}      
+			<input type="text" placeholder="Enter Username" name="username" required><br/>
+			<input type="password" placeholder="Enter Password" name="password" required><br/><br/>
+			<button type="submit" class="validatesignup" >Validate</button>  	          
+		</form>
+		<button type="submit" class="cancelbtn" onclick="document.getElementById('id02').style.display = 'none';" >Close</button>
+		<a href="/account/signup/"> <button type="submit" class="signupbtn"  >Sign up</button> </a>
+	</center> 
+</div>
+{% endblock %}

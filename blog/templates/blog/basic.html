@@ -1,0 +1,117 @@
+<!DODTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="account/static/account/bootstrap.min.css"/>
+    <title> my app </title>
+    <meta charset="utf-8"/>
+    {% load staticfiles %}
+    <link rel="stylesheet"  href="{% static 'account/css/bootstrap.min.css' %}"  type='text/css' />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <script>
+  for (var i = 0; i < document.links.length; i++) {
+      if (document.links[i].href == document.URL) {
+        document.links[i].className = 'active';
+		document.links[i].style.color = 'red';
+		
+      } else {document.links[0].className = 'active';
+	           document.links[0].style.color = 'red';
+	  }
+    }
+    </script>
+    <style type="text/css">
+        html,
+        body{
+            height: 100%;
+        }
+    </style>
+</head>
+<body   class="body" style="background-color: #f6f6f6">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/account/"> <strong> COSMOS APPLICATION </strong> </a>
+    </div>
+	{% if request.user.is_authenticated %}
+	    {% if request.user.is_superuser %}
+	       <ul class="nav navbar-nav navbar-left">
+             <li class=""><a href="/account/loggedin/"> Home </a></li>
+	         <li class=""><a href="/account/listEmailConf/"> Email confirmation </a></li>
+             <li class=""><a href="/blog/"> Blog</a></li>
+             <li class="active"><a href="/account/monitorUsers/">Monitor Users</a></li>
+             <li ><a href="/account/"> Contact </a></li>
+           </ul>
+		   <ul class="nav navbar-nav navbar-right">
+              <li ><a href="/account/logout/">LOGOUT</a></li>
+           </ul>
+        {%else %}
+		    <ul class="nav navbar-nav navbar-left">
+             <li class=""><a href="/account/loggedin/"> Home </a></li>
+	         <li class=""><a href="/account/listEmailConf/"> Email confirmation </a></li>
+             <li class=""><a href="/blog/"> Blog</a></li>
+             <li ><a href="/account/"> Contact </a></li>
+           </ul>
+		   <ul class="nav navbar-nav navbar-right">
+              <li ><a href="/account/logout/">LOGOUT</a></li>
+           </ul>
+        {%endif %}
+	{%else %}
+	       <ul class="nav navbar-nav navbar-right">
+              <li ><a href="/account/">LOGIN</a></li>
+			  <li class=""><a href="/account/listEmailConf/"> Email confirmation </a></li>
+              <li ><a href="/account/signup/"> CREATE AN ACCOUNT </a></li>
+           </ul>
+	{%endif %}   
+  </div>
+</nav>
+<div class="container-fluid" style="min-heiht: 100%;">
+      <div class="row">
+           <div class="col-sm-2"><br/>		                          
+		             <center><img src="{% static 'account/img/Na1.jpg' %}"  style='max-height: 100px; align-self: center' alt="face"></center>
+		   </div>
+           <div class="col-sm-6" > </div>
+           <div class="col-sm-4" >
+			  {% if request.user.is_authenticated %}
+                <p>Welcome, <strong style="color: green">{{ request.user.get_username }}</strong>.</p>
+              {% else %}
+                <p>Welcome, new user. Please log in.</p>
+              {% endif %}
+           </div>
+	  </div>
+      <div class="row">
+           <div class="col-sm-2">
+              <br/><br/>
+               <div class="well bs-sidebar" id="sidebar" style="background-color: #fff ">	
+               {% if request.user.is_authenticated %}		   
+					<ul class="nav nav-pills nav-stacked">
+                        <li><a href="/account/"> Add blog </a></li>
+                        <li><a href="/account/loggedin/"> Delete blog </a></li>
+                        <li><a href="/account/loggedin/"> Update blog </a></li>
+                        <li><a href="/account/"> Save blog </a></li>
+                    </ul>
+				{% else %}
+					<ul class="nav nav-pills nav-stacked">
+                    </ul>				
+                {% endif %}			
+               </div>  <!-- well bs sidebar affix -->
+           </div>
+           <div class="col-sm-10">
+               <div class="container-fluid">
+                   {% block content %}
+                   {% endblock %}
+               </div>
+           </div>
+	  </div> <br/><br/><br/><br/>
+</div>
+<footer style="vertical-align: bottom; horizontal-align : center; width: 60%">
+             <div class="container-fluid" style="  margin-left: 300px">              
+                <div class="row"> 				 
+                  <div class="col-md-3" ><a href="%" target="blank">Contact  </a>|</div>
+                  <div class="col-md-3 " ><a href="www.Twiter.com" target="_blank">Twiter  </a>|</div>
+                  <div class="col-md-3 " ><a href="www.google.com" target="_blank">Google  </a>|</div>
+                  <div class="col-md-3" ><a href="www.linkedin.com" target="_blank">LinkedIn </a></div>			
+                </div> 
+             </div>
+</footer> 
+</body>
+</html>
+

@@ -1,0 +1,120 @@
+<!DODTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="account/static/account/bootstrap.min.css"/>
+	<script src="account/static/account/mystyle/javascript.js"></script>
+    <title> loginapp </title>
+    <meta charset="utf-8"/>
+    {% load staticfiles %}   
+		<link rel="stylesheet"  href="{% static 'account/css/bootstrap.min.css' %}"  type='text/css'/>
+		<link rel="javascript"  href="{% static 'account/js/bootstrap.min.js' %}"  type='text/js' />
+		<link rel="javascript"  href="{% static 'account/js/bootstrap.min.js' %}"  type='text/js' />
+		<link rel="stylesheet"  href="{% static 'account/mystyle/styleSheet.css' %}"  type='text/css'/>
+		<meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <script>	
+		function my() {  				
+			var a = 0;	var b=0;		
+			for (var i =1; i < document.links.length; i++) {		  
+				if (document.links[i].href == document.URL) {
+					a=1;
+					b=i;
+					i=document.links.length;
+				}
+			}			
+			if (a==1) {
+				document.links[b].className = 'active';
+				document.links[b].style.color = 'white';
+			}
+			else{
+				document.links[1].className = 'active';
+				document.links[1].style.color = 'white';
+			}
+		}		
+	</script>
+</head>
+<body class="body" style="background-color: #f6f6f6" onload="my()">
+	<nav class="navbar navbar-inverse affix" data-spy="affix" data-offset-top="197">	
+	  <div id="d1" class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/account/loggedin/"> <strong style="font-size:22px; color:rgb(250,245,250) "> COSMOS APPLICATION </strong> </a>
+        </div>		
+	    {% if request.user.is_authenticated %}
+		  {% if request.user.is_superuser %}
+	        <ul class="nav navbar-nav navbar-left" id="navigation" >
+              <li><a href="/account/loggedin/"> Home </a></li>
+			  <li><a href="/blog/comment/"> Blog </a></li>
+			  <li><a href="/account/monitorUsers/">Users</a></li>			 
+              <li><a href="/account/contact/"> Contact </a></li>
+            </ul>
+		    <ul class="nav navbar-nav navbar-right">
+               <li><a href="/account/logout/">LOGOUT</a></li>
+		    </ul>
+         {%else %}
+		    <ul class="nav navbar-nav navbar-left">
+              <li><a href="/account/loggedin/"> Home </a></li>
+              <li><a href="/blog/comment/"> Blog</a></li>
+              <li><a href="/account/contact/"> Contact </a></li>
+            </ul>
+		    <ul class="nav navbar-nav navbar-right">
+              <li><a href="/account/logout/">Logout</a></li>
+            </ul>
+         {%endif %}
+	    {%else %}
+	       <ul class="nav navbar-nav navbar-right">
+              <li><a href="/account/">Login</a></li>
+              <li><a href="/account/signup/"> Create an account </a></li>
+           </ul>
+	    {%endif %}   
+	  </div>
+	</nav>
+	<div class="container-fluid distance" style="min-height: 100%; padding-bottom:50px;">
+		<div class="row">
+			<div class="col-md-2"> 
+				<img  style='margin-top:30px; max-height: 100px; border-radius: 0.40em; align-self: center; ' src="{% static 'account/img/Na1.jpg' %}" alt="face">
+				<div class="well bs-sidebar affixsidebar" id="sidebar" style="background-color: #222 ">	
+					{% if request.user.is_authenticated %}		   
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="/blog/blogForm/"> Add blog </a></li>
+							<li><a href="/account/loggedin/"> Delete blog </a></li>
+							<li><a href="/account/loggedin/"> Update blog </a></li>
+						</ul>
+					{% else %}
+						<ul class="nav nav-pills nav-stacked">
+						</ul>				
+					{% endif %}			
+				</div>  <!-- well bs sidebar affix -->
+            </div>
+            <div class="col-md-8 blockcont" style="min-height:100%">
+				<div class="container-fluid">
+					{% block content %}
+					{% endblock %}
+				</div>
+            </div>
+			<div class="col-md-2">
+				<p  style="margin-left:50px; margin-top:0px; position:fixed; color : green;">
+					{% if request.user.is_authenticated %}
+						Welcome, <strong style="color: green; text-transform: uppercase;">{{ request.user.get_username }}</strong>.
+					{% else %} 
+						<strong>Please login.</strong>
+					{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+	<footer>
+             <div class="container-fluid" >              
+                <div class="row"> 
+				<center>
+				  <div class="col-md-4" ></div> 
+                  <div class="col-md-1" ><a href="/account/contact/" target="blank">Contact </a></div>
+                  <div class="col-md-1 " ><a href="/www.Twiter.com" target="_blank">Twiter  </a></div>
+                  <div class="col-md-1 " ><a href="/www.google.com" target="_blank">Google  </a></div>
+                  <div class="col-md-1" ><a href="/www.linkedin.com" target="_blank">LinkedIn </a></div>
+                  <div class="col-md-4" ></div> 				  
+				</center>
+                </div> 
+             </div>
+	</footer> 
+</body>
+</html>
+

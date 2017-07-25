@@ -1,0 +1,38 @@
+{% extends "account/basic.html" %}
+{% block content %}
+<div class="col-md-1"></div> 
+<div class="col-md-7 divcommun" style="	margin-top:20px; min-height:100%">
+<center>
+    <form class="navbar-form navbar-left" method="GET" action="/account/find_user/" >
+			<div class="form-group" >
+				<input type="text" name= "username" value="{{ request.GET.username }}" class="form-control" placeholder="Find user by username">
+			</div>
+			<button class="btn btn-default"  type="submit" style=" width:120px; height:33px;" >
+				<i class="glyphicon glyphicon-search"></i>
+			</button>
+    </form><br/><br/>    
+    <table  class="table table-responsive">
+	  <thead style="background-color : 	rgb(100,100,100); color: white ; height:60px ">
+				<tr>
+					<th> ID </th><th>USERNAME</th><th style="width: 200px" >STATUS</th><th>ACTIVATION</th>
+					<th> ROLE</th><th> DELETE </th><th> ACTIVATION </th><th> DESACTIVATION </th>	 
+				</tr><br/>
+	  </thead><br/>
+	  <tbody>
+        {% for u in users %}		 
+			<tr>		
+				<th scope="row">{{u.user.id}}</th>
+				<td style="text-transform: capitalize;"> {{u.user.username}}</td>
+				<td id="td1" style="text-transform: capitalize;">{{u.status}}</td>
+				<td>{% if u.user.is_active %} Active {% else %} Not active {% endif %}</td> 
+				<td>{% if u.user.is_superuser %} Admin {% else %} Simple user {% endif %}</td>
+				<td><a href="/account/{{u.user.id}}/del_user/">Delete</a></td>
+				<td><a href="/account/{{u.user.id}}/activate_user/">Activate</a></td>
+				<td><a href="/account/{{u.user.id}}/desactivate_user/">Desactivate</a></td>
+			</tr> 
+        {% endfor%}
+     </tbody>	 
+    </table>
+</center>
+</div>	  
+{% endblock %}

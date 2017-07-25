@@ -1,0 +1,262 @@
+/*  ------------------------------design for  basic page --------------------------------------- */	
+body {
+	position: relative; 
+}
+
+.blockcont{	
+	background-color: rgb(253,253,230);
+	padding-top:50px;
+	padding-bottom:1px;
+	padding-left:20px;
+	padding-right:20px;
+	border-radius: 0.4em;
+	min-height:100%;
+}
+
+.divcommun{	
+	width:100%;
+}
+		
+.affix {
+	top:0;
+	width: 100%;
+	z-index: 9999 !important;
+}
+		
+.navbar {
+	margin-bottom: 0px;
+}
+
+.distance{
+	margin-right : 0;
+	margin-top :	30px   
+}
+  
+.affix ~ .container-fluid {
+	position: relative;
+	top: 50px;
+}
+
+.affixsidebar{
+	position:fixed;
+	margin-left:0px auto ;
+	width:180px;
+	padding-left:10px;
+	background-color: #fff;
+	margin-top:20px;
+}
+
+.divside1{
+	position:fixed;
+	margin-right:1px;
+	margin-top:1px;
+}
+
+.divside2{	
+	background-color: #fff;
+}
+
+.cosmos{
+	font-size:23px;
+	color:#B0E0E6; 
+	padding:5px 7px;
+}
+				
+footer {
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	height:40px;
+	width:100%;
+	background:rgb(230,240,240);
+	padding-top:10px;
+	margin-bottom:0px;
+}
+
+/* IE 6 */
+* html footer {
+	position:absolute;
+	top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+
+		
+/*  ------------------------------design for  login page --------------------------------------- */
+
+/* Full-width input fields */
+input {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	border-radius: 0.40em;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+	border-radius: 0.40em;
+    width: 60%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn, .signupbtn {
+    width: 30%;
+    background-color: #f44336;
+	margin-bottom:30px;	
+}
+
+/* Extra styles for the signup button */
+.signupbtn {
+    background-color: #000000;
+}
+
+/* Extra styles for the validate button */
+.validatesignup{	
+	margin-top:20px;
+	margin-bottom:1px;
+}
+
+/* design of header in login page */
+.h33{
+	padding-left:180px;	
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+	max-height: 100px;
+	
+}
+
+img.avatar {
+    width: 80%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* ------------------------------ The Modal (background) ------------------------------------------------- */
+.modal , .modal2 {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 10px;
+}
+
+/* ------------------------------ The Modal2 for signup page  (background) ----------------------------------- */
+
+#id02{   
+     padding-top: 1px;
+}
+
+/* Modal Content/Box login and signup */
+.modal-content , .modal-content2 {
+    background-color: #fefefe;
+    border: 1px solid #888;
+	padding: 10px 10px 10px 10px ;
+}
+
+/* extra design for Modal Content/Box signup*/
+.modal-content2 {
+    width: 40%; /* Could be more or less, depending on screen size */
+	border-radius: 0.80em; /* */
+	margin: 4% auto 3% auto; /* 5% from the top, 15% from the bottom and centered */
+}
+
+/* extra design for Modal Content/Box signup*/
+.modal-content{	
+    width: 33%; /* Could be more or less, depending on screen size */
+	height:62%;
+	margin: 8% auto 4% auto; /* 5% from the top, 15% from the bottom and centered */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 160px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+/* a design for post page */
+
+	.hpost5{
+	border-radius: 0.80em;
+	background-color : rgb(255,255,255); 
+	color: black ;
+	font-size: medium;
+	min-height:50px;
+	width:600px; 
+	padding-left:20px;
+	
+	}
+	
+	.hpost4{
+	font-family:Serif; 
+	font-size:20px; 
+	text-transform: capitalize;
+	padding-bottom:10px;
+	
+	}
+	

@@ -1,0 +1,25 @@
+{% extends "account/basic.html" %}
+{% block content %}
+	<div class="col-md-8  modal2" id="div14" style="width:100%;">
+		<center class="modal-content2 animate">
+			<h2 style="color:green;">Sign up</h2><br/>
+			<form  method="post"  action="/account/signup/">
+				<p>	{% csrf_token %}
+					{% for field in form %}	  
+						<p>{{ field.label_tag }}</p>
+						<p>{{ field }}</p>								   
+						{% if field.help_text %}
+							<p><small style="display: none">{{ field.help_text }}</small></p>
+						{% endif %}
+						{% for error in field.errors %}
+							<p style="color: red">{{ error }}</p>
+						{% endfor %}
+					{% endfor %}
+				</p>
+				<button type="submit" class="button  validatesignup " >Validate</button>
+			</form>
+			<button type="submit" class="cancelbtn" onclick="document.getElementById('div14').style.display = 'none';" >Close</button>
+			<a href="/account/"><button type="submit" class="signupbtn" >Login</button></a><br/>
+		</center>
+	</div>
+{% endblock %}
